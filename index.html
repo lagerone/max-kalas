@@ -175,13 +175,15 @@
             <li>Daniel, <a href="tel:+46709464817">0709-46 48 17</a> eller</li>
             <li>Johanna, <a href="tel:+46709464817">0709-46 48 17</a></li>
           </ul>
+          <p>Vi bor på Stenshögsvägen 8 i Hjärup.</p>
+          <p><strong>Välkommen!</strong></p>
         </div>
       </div>
 
-      <div>
+      <div class="gmaps">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2250.2597472869215!2d13.139975416211737!3d55.66708318053052!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4653a2af8e6e95a3%3A0xbfb904215c5f790d!2zU3RlbnNow7Znc3bDpGdlbiA4LCAyNDUgNjIgSGrDpHJ1cA!5e0!3m2!1ssv!2sse!4v1589466368746!5m2!1ssv!2sse"
-          width="600"
+          width="500"
           height="450"
           frameborder="0"
           style="border: 0;"
@@ -221,15 +223,17 @@
 
             if (imageIndex === 7) {
               const currentImageHeight = imgTag.clientHeight;
-              hideSlideShow();
               bannerIntervalId = showBanner(currentImageHeight);
+              hideSlideShow();
             }
 
             if (imageIndex === 11) {
-              hideBanner(bannerIntervalId);
-              showSlideShow();
               imageIndex = 0;
               showImage(imageIndex);
+              showSlideShow();
+              setTimeout(() => {
+                hideBanner(bannerIntervalId);
+              });
             }
 
             imageIndex++;
