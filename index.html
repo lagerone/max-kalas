@@ -38,7 +38,7 @@
         font-family: "Pacifico", cursive;
         font-size: 20vw;
         line-height: 1.5em;
-        margin: 0;
+        margin: 0 0 30px 0;
         padding: 30px;
         color: #1d9099;
         text-shadow: 1vmin 1vmin 0 #e79c10, -1vmin -1vmin 0 #d53a33;
@@ -55,11 +55,25 @@
         background-color: #fff;
         margin: 10px;
         margin-bottom: 50px;
+      }
+
+      .rot-1 {
         transform: rotate(-4deg);
       }
 
-      .information__text {
+      .rot-1-1 {
         transform: rotate(1deg);
+      }
+
+      .rot-2 {
+        transform: rotate(2deg);
+      }
+
+      .rot-2-2 {
+        transform: rotate(-1deg);
+      }
+
+      .information-text {
         padding: 20px;
         font-size: 20px;
         line-height: 26px;
@@ -68,29 +82,35 @@
 
       .image-show {
         position: relative;
-        max-width: 500px;
-        max-height: 500px;
+        max-width: 450px;
+        max-height: 450px;
         margin: 0 auto;
-        margin-bottom: 20px;
+        margin-bottom: 50px;
+        padding: 0 20px;
       }
 
       .image-text {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         position: absolute;
-        bottom: 0;
-        left: 15px;
-        padding: 20px;
+        bottom: 8px;
+        left: 40px;
+        padding: 10px 0;
+        width: 150px;
         margin: 0;
+        transition: left 0.5s ease;
+        border-radius: 9px;
         background-color: rgba(255, 255, 255, 0.7);
-        font-size: 40px;
+        font-size: 30px;
         font-weight: normal;
         font-family: "Pacifico", cursive;
-        line-height: 1em;
-        transition: left 0.5s ease;
       }
 
-      @media screen and (min-width: 600px) {
+      @media screen and (min-width: 500px) {
         .image-text {
-          top: 75%;
+          font-size: 40px;
+          width: 200px;
         }
       }
 
@@ -110,7 +130,6 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 330px;
         margin: 0 auto;
         font-size: 60px;
         font-weight: normal;
@@ -135,15 +154,27 @@
         </div>
         <img class="image-show-tag" src="images/max-0.jpg" alt="Max 0 år" />
       </div>
-      <div class="information">
-        <div class="information__text">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
+      <div class="information rot-1">
+        <div class="information-text rot-1-1">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+        </div>
+      </div>
+      <div class="information rot-2">
+        <div class="information-text rot-2-2">
+          <h3>OSA</h3>
+          <p>Skicka sms till innan 23 maj <strong>om ni kommer</strong>:</p>
+          <ul>
+            <li>Daniel, <a href="tel:+46709464817">0709-46 48 17</a> eller</li>
+            <li>Johanna, <a href="tel:+46709464817">0709-46 48 17</a></li>
+          </ul>
         </div>
       </div>
     </div>
@@ -205,7 +236,7 @@
         function showImage(imageIndex) {
           imgTag.src = sources[imageIndex];
           textBox.innerHTML = `Max ${imageIndex} år`;
-          textBox.style.left = 15 + imageIndex * 20 + "px";
+          textBox.style.left = 40 + imageIndex * 20 + "px";
         }
 
         function showBanner(bannerHeight) {
