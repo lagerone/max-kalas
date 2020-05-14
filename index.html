@@ -136,6 +136,11 @@
         color: #000;
       }
 
+      .pnum {
+        color: #333;
+        text-decoration: underline dotted;
+      }
+
       .hidden {
         display: none;
       }
@@ -156,27 +161,28 @@
       <div class="information rot-1">
         <div class="information-text rot-1-1">
           <h2>Välkommen till Max 7års-kalas!</h2>
-          <p>
-            Lorem ipsum dolor sit amet, <strong>13-15</strong> consectetur
-            adipiscing elit, sed do eiusmod tempor
-          </p>
+          <p><strong>När?</strong> Söndagen den 31/5 kl. 13-15.</p>
+          <p><strong>Var?</strong> Stenshögsvägen 8 i Hjärup.</p>
+          <p>Vi bjuder på grillad korv och fika.</p>
           <p><strong>Vi kommer vara utomhus!</strong></p>
-          <ul>
-            <li>Grillad korv</li>
-            <li>Kakor</li>
-          </ul>
+          <p>Tanken är att vi ska vara ute så klä er efter väder.</p>
+          <p>
+            Självklart finns huset att tillgå för toalettbesök & handtvätt etc.
+          </p>
+          <p><strong>Välkommen!</strong></p>
         </div>
       </div>
       <div class="information rot-2">
         <div class="information-text rot-2-2">
           <h3>OSA</h3>
-          <p>OSA via SMS senast 23 maj till:</p>
-          <ul>
-            <li>Daniel, <a href="tel:+46709464817">0709-46 48 17</a> eller</li>
-            <li>Johanna, <a href="tel:+46709464817">0709-46 48 17</a></li>
-          </ul>
-          <p>Vi bor på Stenshögsvägen 8 i Hjärup.</p>
-          <p><strong>Välkommen!</strong></p>
+          <p>
+            OSA senast 27/5 om ni <strong>INTE</strong> kan komma, samt meddela
+            eventuella allergier/matpreferenser till <br />
+            Johanna,
+            <a class="pnum" href="tel:+46730349750">0730-43 97 50</a> eller
+            <br />Daniel,
+            <a class="pnum" href="tel:+46709464817">0709-46 48 17</a>.
+          </p>
         </div>
       </div>
 
@@ -184,7 +190,7 @@
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2250.2597472869215!2d13.139975416211737!3d55.66708318053052!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4653a2af8e6e95a3%3A0xbfb904215c5f790d!2zU3RlbnNow7Znc3bDpGdlbiA4LCAyNDUgNjIgSGrDpHJ1cA!5e0!3m2!1ssv!2sse!4v1589466368746!5m2!1ssv!2sse"
           width="500"
-          height="450"
+          height="500"
           frameborder="0"
           style="border: 0;"
           allowfullscreen=""
@@ -208,15 +214,26 @@
         const textBox = document.querySelector(".image-text");
         const banner = document.querySelector(".banner");
 
-        console.log(imgTag.clientHeight);
-        runProgram();
+        let programIntervalId = null;
 
-        function runProgram(bannerHeight) {
+        startProgram();
+
+        document.querySelector(".image-show").addEventListener("click", () => {
+          console.log("programIntervalId", programIntervalId);
+          if (programIntervalId) {
+            stopProgram(programIntervalId);
+            programIntervalId = null;
+          } else {
+            startProgram();
+          }
+        });
+
+        function startProgram() {
           let imageIndex = 0;
 
           let bannerIntervalId;
 
-          const intervalId = setInterval(() => {
+          programIntervalId = setInterval(() => {
             if (imageIndex < 7) {
               showImage(imageIndex);
             }
@@ -238,6 +255,10 @@
 
             imageIndex++;
           }, 1000);
+        }
+
+        function stopProgram(intervalId) {
+          clearInterval(intervalId);
         }
 
         function hideSlideShow() {
